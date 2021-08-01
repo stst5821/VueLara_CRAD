@@ -72,7 +72,7 @@ export default {
     methods: {
         getTask() {
             axios.get("/api/tasks/" + this.taskId).then(res => {
-                this.$router.push({ name: task.list });
+                this.task = res.data;
             });
         },
         submit() {
