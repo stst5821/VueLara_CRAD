@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-6">
-                <form>
+                <form v-on:submit.prevent="submit">
                     <div class="form-group row">
                         <label for="title" class="col-sm-3 col-form-label"
                             >Title</label
@@ -11,6 +11,7 @@
                             type="text"
                             class="col-sm-9 form-control"
                             id="title"
+                            v-model="task.title"
                         />
                     </div>
                     <div class="form-group row">
@@ -21,6 +22,7 @@
                             type="text"
                             class="col-sm-9 form-control"
                             id="content"
+                            v-model="task.content"
                         />
                     </div>
                     <div class="form-group row">
@@ -33,6 +35,7 @@
                             type="text"
                             class="col-sm-9 form-control"
                             id="person-in-charge"
+                            v-model="task.person_in_charge"
                         />
                     </div>
                     <button type="submit" class="btn btn-primary">
@@ -45,5 +48,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data: function() {
+        return {
+            task: {}
+        };
+    },
+    methods: {
+        submit() {
+            axios.post("/api/tasks", this.task).then(res => {
+                this.$router.push({ name: "task.list" }); // タスクの登録後、listページに移動
+            });
+        }
+    }
+};
 </script>
