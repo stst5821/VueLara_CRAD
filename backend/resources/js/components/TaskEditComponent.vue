@@ -71,7 +71,7 @@ export default {
     },
     methods: {
         getTask() {
-            axios.get("/api/tasks/" + this.taskId).the(res => {
+            axios.get("/api/tasks/" + this.taskId).then(res => {
                 this.$router.push({ name: task.list });
             });
         },
