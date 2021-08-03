@@ -5,6 +5,7 @@ import TaskListComponent from "./components/TaskListComponent";
 import TaskShowComponent from "./components/TaskShowComponent";
 import TaskCreateComponent from "./components/TaskCreateComponent";
 import TaskEditComponent from "./components/TaskEditComponent";
+import store from "./store/index";
 
 require("./bootstrap");
 
@@ -65,5 +66,6 @@ Vue.component("header-component", HeaderComponent);
 
 const app = new Vue({
     el: "#app",
-    router
+    router,
+    store
 });
