@@ -57,24 +57,13 @@
 
 <script>
 export default {
-    // tasksを宣言し、空の配列を用意する。
-    // data: function() {
-    //     return {
-    //         tasks: []
-    //     };
-    // },
+    // getTasks->setTasksで更新されたstateをtasksに入れる
     computed: {
         tasks: function() {
             return this.$store.state.tasks;
         }
     },
     methods: {
-        // axiosでタスク一覧を取得しresponseをtasksに入れる。
-        // getTasks() {
-        //     axios.get("/api/tasks").then(res => {
-        //         this.tasks = res.data;
-        //     });
-        // },
         deleteTask(index, id) {
             this.tasks.splice(index, 1); // 先にtasksの配列の中から該当IDのtaskを削除
             // 配列から削除後に、DBから削除することで、delete押してから消えるまでのラグをなくす。
@@ -86,7 +75,6 @@ export default {
     // 画面描画時に、getTasksメソッドを呼び出す。
     mounted() {
         this.$store.dispatch("getTasks");
-        // this.getTasks();
     }
 };
 </script>
